@@ -401,6 +401,7 @@ table td {
 /**
  * Posts
  */
+posts{background-color:red;}
 .post-header {
   margin-bottom: 30px;
 }
