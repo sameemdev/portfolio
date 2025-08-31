@@ -4,15 +4,4 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Here, I share tips, insights, and things I’ve explored and tested around securing Microsoft 365 environments and general cybersecurity. It’s a space where I document what I’ve learned, experiment with different approaches, and reflect on practical ways to keep digital tools and data safer. While it’s more of a personal interest than professional work, I hope these notes and experiments can be useful to others who are curious about cybersecurity.
