@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Securing M365
+title: 
 email: sameem.sof@gmail.com
 description: "Explore actionable tips, best practices, and expert insights to protect your cloud infrastructure and keep your organization safe."
 baseurl: "/portfolio"
