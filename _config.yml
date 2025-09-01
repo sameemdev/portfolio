@@ -22,7 +22,6 @@ title: Securing Microsoft 365 Infrastructure
 description: "Explore actionable tips, best practices, and expert insights to protect your cloud infrastructure and keep your organization safe."
 baseurl: "/portfolio"
 url: "https://sameemdev.github.io"
-twitter_username: jekyllrb
 github_username: sameemdev
 
 theme: minima
