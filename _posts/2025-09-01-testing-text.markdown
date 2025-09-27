@@ -29,7 +29,8 @@ In this post, we’ll explore **why Conditional Access matters**, key **best pra
 ###  Example: Detecting Device Logon Events
 
 You can use **Kusto Query Language (KQL)** in Microsoft Sentinel or Log Analytics to check device sign-ins.
-
-```kusto
+Test code snippet
+{% highlight ruby %}
 Devicelogonevents
-| where Osplatform contains "Windows"
+|where Osplatform contains "Windows"
+{% endhighlight %}
