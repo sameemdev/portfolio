@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Cybersecurity
+title: Microsoft 365 Security
 permalink: /basic-cybersecurity/
 ---
 
