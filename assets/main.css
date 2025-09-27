@@ -307,7 +307,7 @@ table th {
   transition: background 0.2s ease;
 }
 .post-preview:hover {
-  background: #f9f9f9;
+background: #f9f9f9;
 }
 .post-link {
   text-decoration: none;
