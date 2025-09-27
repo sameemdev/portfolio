@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Basic Cybersecurity
+title: Cybersecurity
 permalink: /basic-cybersecurity/
 ---
 
