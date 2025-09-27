@@ -16,11 +16,14 @@ layout: default
       <article class="post-preview">
         <a href="{{ post.url | relative_url }}" class="post-link">
           <h3 class="post-title">{{ post.title | escape }}</h3>
-          <p class="post-excerpt">
-            {{ post.excerpt | strip_html | truncatewords: 30 }}
-          </p>
         </a>
-      </article>
+        <div class="post-paragraph">
+          {%- assign clean_content = post.content | strip_html | split: "\n" -%}
+          {%- assign filtered_lines = "" -%}
+          {{  post.content | truncatewords: 50 }}
+        </div>
+        <a href="{{ post.url | relative_url }}" class="read-more">Read more →
+      </article></a>
       {%- endfor -%}
     </div>
   {%- endif -%}
