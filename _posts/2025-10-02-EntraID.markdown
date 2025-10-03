@@ -647,32 +647,50 @@ Otherwise, sign-ins will be blocked.
 
 ---
 
-
 ### Configuring Sign-in Risk Policy
 
-Sign-in risk policy is configured the same way as User Risk policy, but recommendation is to not block the sign-ins but rather require MFA. Because blocking sign-ins may prevent real user from signing-in. MFA will almost guarantee that the sign-in is authorized.
+Sign-in risk policy is configured the same way as User Risk policy, but the recommendation is to **not block sign-ins**—rather, require MFA. Blocking sign-ins may prevent real users from signing in, while MFA almost guarantees that the sign-in is authorized.
 
-So to configure sign-in risk policy:
+#### Steps to Configure Sign-in Risk Policy:
 
-1- Create a CA policy > Conditions > Sign-in Risks  
-2- Set to medium and high because choosing low as well, will generate a lot of false positives and cause user interruptions.  
-3- Then choose grant in access control > Require MFA  
-4- Then go to sessions select sign-in frequency > and choose every time so the user needs to sign-in every time so the user immediately must reauthenticate.  
-5- Test the policy by saving it in report-only mode or directly enabling it.
+1. **Create a CA policy**  
+   Go to: `Conditions > Sign-in Risks`
+
+2. **Set risk level to medium and high**  
+   Avoid selecting low to reduce false positives and prevent unnecessary user interruptions.
+
+3. **Access control > Grant > Require MFA**  
+   This ensures that sign-ins are verified securely.
+
+4. **Session controls > Sign-in frequency > Every time**  
+   Forces reauthentication at every sign-in attempt.
+
+5. **Test the policy**  
+   Save it in **report-only mode** for evaluation or enable it directly for enforcement.
 
 ---
 
+
 ### Investigating Risks
+Identity Protection provides three types of risk reports that can be analyzed to investigate or manually remediate risks such as changing user passwords, disabling accounts, and more.
 
-Identity protection provides three types of risk reports that we can analyse to either investigate risks or manually as admin remediate them (changing user password, disabling user account and etc). These reports are:
+#### 1. Risky Sign-ins Reports
 
-1- Risky sign-ins Reports: All sign-ins which identity protection assumes are compromised will end up here. You can of course filter the output to swiftly find what you are looking for.  
-2- Risky User Reports: All users which identity protection thinks are compromised will end up here. These reports also contain risks remediated by user themselves and etc. so both active risks and risk logs.  
-3- Risk Detection Reports: With the information provided by the risk detections report, administrators can find:
+All sign-ins which Identity Protection assumes are compromised will end up here.  
+You can filter the output to swiftly find what you are looking for.
 
-- Information about each risk detection including type.  
-- Other risks triggered at the same time.  
-- Sign-in attempt location.
+#### 2. Risky User Reports
+
+All users which Identity Protection thinks are compromised will end up here.  
+These reports also contain risks remediated by users themselves, so both active risks and historical risk logs are included.
+
+#### 3. Risk Detection Reports
+
+With the information provided by the Risk Detection Report, administrators can find:
+
+- Information about each risk detection including type  
+- Other risks triggered at the same time  
+- Sign-in attempt location
 
 ---
 
@@ -719,7 +737,7 @@ There are different types of roles that we can assign to users, groups, and mana
 
 Custom roles can be created from scratch or by using built-in roles as templates. These roles can be customized to meet specific requirements and assigned to users, groups, or managed identities.
 
-### Configuring Azure RBAC
+#### Configuring Azure RBAC
 
 To configure RBAC (Azure Role-Based Access Control):
 
@@ -734,14 +752,14 @@ To configure RBAC (Azure Role-Based Access Control):
 
 ###  Configuring Entra Roles
 
-### Assigning Built-in Entra Roles
+#### Assigning Built-in Entra Roles
 
 1. Go to the user or group view  
 2. Select **Assigned Roles**  
 3. Click **Add Assignment**  
 4. Choose a built-in role
 
-### Creating and Assigning Custom Entra Roles
+#### Creating and Assigning Custom Entra Roles
 
 1. Go to **Roles and Administrators**  
 2. Select **New Custom Role**  
@@ -750,7 +768,7 @@ To configure RBAC (Azure Role-Based Access Control):
 
 ---
 
-###  Managed Identities
+####  Managed Identities
 
 When building applications, developers need to store secrets, keys, certificates, and credentials securely. These should not be stored in the application code due to security risks.
 
@@ -776,7 +794,7 @@ Use **Managed Identities** to eliminate the need for developers to manage creden
 
 Azure Key Vaults securely store application credentials (keys, certificates, secrets). Access must be restricted to authorized users and services.
 
-### Two Access Control Methods:
+#### Two Access Control Methods:
 
 1. **Key Vault Access Policy:**  
    - Go to the Key Vault resource  
@@ -814,29 +832,29 @@ In a corporate environment, users have varying roles, permissions, licenses, and
 **Solution:**  
 Use **Entitlement Management** in Entra ID to group resources and manage access through automated workflows and policies.
 
-### Benefits:
+#### Benefits:
 
 - Users request access through automated workflows  
 - Access is granted based on roles and policies  
 - Access is revoked automatically when no longer needed
 
-### Catalogs
+#### Catalogs
 
 Use catalogs to group resources:
 
 - **Onboarding Catalog:** For new employees  
 - **External Catalog:** For partners and collaborators
 
-### Resource Groups vs. Catalogs
+#### Resource Groups vs. Catalogs
 
 - **Resource Groups:** Infrastructure-level bundling (e.g., WebAppDeployment)  
 - **Catalogs:** Access-level bundling for entitlement management
 
-### Access Packages
+#### Access Packages
 
 Bundles of applications managed within a catalog.
 
-### Creating a Catalog
+#### Creating a Catalog
 
 1. Go to:  
    `Identity and Governance > Entitlement Management > Create Catalog`  
@@ -863,17 +881,17 @@ In a corporate environment, there are hundreds or even thousands of users assign
 This unmonitored access raises concerns around **security** and **compliance**.  
 Access Reviews help organizations control and audit user access to resources.
 
-### Key Features:
+#### Key Features:
 
 - **Self-access reviews:** Users review their own access to determine if it's still needed  
 - **Delegated reviews:** Managers or IT admins review user access periodically or one-time  
 - **Review outcomes:** Access can be revoked or retained based on reviewer decisions
 
-### Configuration:
+#### Configuration:
 
 Access Reviews are configured in **Identity Governance** within the Entra ID admin center.
 
-### Types of Access Reviews:
+#### Types of Access Reviews:
 
 1. **Applications**  
 2. **Teams and Groups**  
@@ -887,7 +905,7 @@ If a user no longer needs access to these resources, it can be revoked through t
 
 PIM allows organizations to grant **temporary elevated privileges** to users.
 
-### Use Case:
+#### Use Case:
 
 A user needs admin-level access for a specific task but shouldn't be permanently assigned an admin role.  
 PIM enables temporary elevation for that task.
@@ -899,7 +917,7 @@ PIM enables temporary elevation for that task.
 
 ---
 
-###  Configuring PIM for Entra Roles
+####  Configuring PIM for Entra Roles
 
 1. Go to:  
    `Entra Admin Center > Identity Governance > Privileged Identity Management > Microsoft Entra Roles > Settings`  
@@ -908,14 +926,14 @@ PIM enables temporary elevation for that task.
 
 ---
 
-###  Configuring PIM for Groups
+####  Configuring PIM for Groups
 
 Sometimes it's more efficient to configure PIM for groups rather than individual users.
 
 **Example:**  
 You have several security analysts from a partner company providing SOC services.
 
-### Procedure:
+#### Procedure:
 
 1. Create a group and assign it a role (e.g., “Security Operator”)  
 2. Go to:  
