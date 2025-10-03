@@ -8,176 +8,647 @@ description: "Microsoft Entra ID learning material. SC-300 prepp-material"
 ---
 
 
-## Identity Provider (IdP): 
-Is a system or application that creates, manages and stores digital identities (Users, accounts or services). Microsoft Entra ID is an example of Identity Provider. 
-An Identity Provider verifies user identities using one or more authentication factors such as passwords, fingerprint scans and so on. An Identity Provider is often a trusted provider for use with single-sign-on (SSO) to access other resources in the network.  A trusted identity provider makes it easier for users to authenticate across different platforms, applications, and services from different vendors because the users will sign-in only once using single-sign-on and will not need to reauthenticate if they want to get access to other resources from other vendors. An Identity provider also makes it great for developers who want to authenticate users to access their applications without creating or storing user identities (user accounts).  
+### Identity Provider (IdP)
 
-## Common Identity Protocols: 
+Is a system or application that creates, manages and stores digital identities (Users, accounts or services). Microsoft Entra ID is an example of Identity Provider.
+
+An Identity Provider verifies user identities using one or more authentication factors such as passwords, fingerprint scans and so on. An Identity Provider is often a trusted provider for use with single-sign-on (SSO) to access other resources in the network.
+
+A trusted identity provider makes it easier for users to authenticate across different platforms, applications, and services from different vendors because the users will sign-in only once using single-sign-on and will not need to reauthenticate if they want to get access to other resources from other vendors.
+
+An Identity provider also makes it great for developers who want to authenticate users to access their applications without creating or storing user identities (user accounts).
+
+---
+
+## Common Identity Protocols
+
 Identity protocols handle authentication, authorization, and identity management. There are several identity protocols, but common ones are:
-OpenID Connect (OIDC): is an authentication protocol that builds upon OAuth 2.0(which is an authorization protocol). It uses OAuth2 credentials to provide identity services. Essentially, it allows users to sign in to third-party applications (like Google, Facebook, Apple) without needing to create a separate account for each app. This means that the third-party service handles the authentication process, relieving the main application from the responsibility of managing user credentials. So OAuth2 provides authorization whereas OpenID Connect provides authentication. Specifically, a system entity (called an OpenID-Provider) issues JSON-formatted identity tokens to OIDC relying parties (applications) via a RESTful HTTP API.
-SAML identity provider - Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between an identity provider and a service provider. SAML is an XML-based markup language for security assertions, which are statements that service providers use to make access-control decisions.
-With the help of these Identity protocols such as OpenID Connect and SAML, Single-Sign-Ons (SSO) can be implemented in the network which means to let users sign-in once and get authenticated across all different applications and systems. 
 
-## Administrative Units: 
-Administrative Units are used to logically group AD resources. For example, you may create one administrative unit for each of your department and then create groups in those Aus.  In terms of access control without using AU and granting a user an administrator role typically provides broad administrative privileges over all users and resources within the tenant, which conflicts with the principle of least privilege. To address this, administrative units (AUs) are introduced, allowing for more granular delegation of administrative permissions. For example, a helpdesk support technician might only need the ability to reset passwords for certain users. By using AUs, you can assign specific users or groups to these units and grant custom administrators permissions to specific helpdesk technicians scoped only to those users or groups within the AU. This ensures that administrators, such as helpdesk technicians, have restricted access limited to the necessary subset of users or resources and not an access over everything in the AD. 
+**OpenID Connect (OIDC):**  
+Is an authentication protocol that builds upon OAuth 2.0 (which is an authorization protocol). It uses OAuth2 credentials to provide identity services. Essentially, it allows users to sign in to third-party applications (like Google, Facebook, Apple) without needing to create a separate account for each app.
 
-## Types of Users in Entra ID:
-- Cloud identities: these are cloud users meaning users existing in Entra ID which has Entra ID as their source. 
-- Directory-synchronized identities: These are users which exist in on-prem active directory and are synchronized with Entra ID via Entra Connect. These users have Windows server AD as their source. 
-- Guest Users: These users exist outside Azure. Examples are accounts from other cloud providers and Microsoft accounts such as an Xbox LIVE account. Their source is Invited user. Guests accounts are normally used for third party collaborators and contractors. 
+This means that the third-party service handles the authentication process, relieving the main application from the responsibility of managing user credentials. So OAuth2 provides authorization whereas OpenID Connect provides authentication.
 
-Deleting User: In Entra ID when a user is deleted, their account gets suspended in a 30 days period and after that period the account is permanently deleted. So within 30 days after deletion you have the opportunity to restore the user account that you have deleted. Go to Users > Deleted Users > restore a specific User account
-Assigning Licences: you can assign licences such as (Microsoft 365 and so on) to a user or a group. If you wanna assign a licence to several users at the same time, create a group and assign it the licences you want. Groups > licences > assign licence.
+Specifically, a system entity (called an OpenID-Provider) issues JSON-formatted identity tokens to OIDC relying parties (applications) via a RESTful HTTP API.
 
-Entra ID Groups:
-There are two types of groups in Entra namely Security groups and Office 365 Groups. 
-1-	Security Groups: are created to manage user permissions and access control by using security policies. It is the most commonly used type of Entra Groups. 
-2-	Office 365 Groups: are created to provide collaboration opportunities by giving members access to shared mailbox, calendar, SharePoint, files and so on. 
-Entra Group Membership Types
-While creating groups they could either be dynamic or assigned meaning when creating a group you must choose how to add users manually or dynamically. 
-Assigned Group Type: Assign groups mean that you add users manually to the newly created group by clicking on add members. 
-Dynamic Group Type: Users are added dynamically based on commands (rules). For example, to create a group for all inactive users, instead of manually searching and adding them one by one, you can create a dynamic group with a rule that automatically includes all inactive users. You then apply the policy to the group, which in turn applies to all members. This saves time, effort, and hassle. If you are adding a single user to the group then of course its better to use the assign type where you add the user manually by yourself. 
+**SAML identity provider:**  
+Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between an identity provider and a service provider. SAML is an XML-based markup language for security assertions, which are statements that service providers use to make access-control decisions.
 
-Security defaults: 
-Security defaults are basic identity security settings recommended by Microsoft. When enabled, these recommendations will be automatically enforced in your organization. Administrators and users will be better protected from common identity-related attacks. If your company is using free tier of Entra id then you can use security defaults which will enforce MFA and other security measures on users but if the company has premium Entra ID licence then it is more secure to use conditional access policy instead of security defaults. By default is security defaults enabled for newly created Entra ID tenants.
- However it’s important to note that if your corporate wants to create a conditional access policy then security default must have been disabled first. So security defaults must always be disabled before creating a conditional access policy.  
-The settings which is automatically enforced could be MFA, conditional access, blocking legacy authentication protocols and more. If these settings such as MFA and conditional access is not activated then security defaults will recommend to activate them. Entra ID > Properties > Security Default. 
+With the help of these Identity protocols such as OpenID Connect and SAML, Single-Sign-Ons (SSO) can be implemented in the network which means to let users sign-in once and get authenticated across all different applications and systems.
 
-Guest Accounts (External Identities): Guest accounts in Entra ID are also called external identities. These users do not initially exist in your tenant but are added as guest users when invited meaning a guest account will be automatically created for a user when the user is invited. You can add guest users to groups and apply settings to it just like a normal member user of your tenant.  This functionality is part of Microsoft's B2B collaboration. Guest users have very limited access, restricted to resources explicitly shared with them. They use their own credentials to sign in and access these shared resources. Guest accounts are denoted by "#EXT#" in their usernames. A scenario for guest users could be for example when you need to have a shared teams channel between your and another company employees. In that case, you will invite the other company users to your tenant as guest users and share the preferred resources with them (such as teams channel). 
-To even more restrict the default access settings of the guest users simply go to Entra admin center > identity > External identities > Overview > External Collobration Settings and choose your preferred settings there for guest users. 
+---
 
-Inviting Guest Users: If you would like to invite your partners, employees of other companies to your shared resources (applications and etc) you can do that in two ways. Inviting guest users individually and in bulk (bulk means inviting several objects at once). 
-Individually inviting a guest user: to invite a single guest user go to Entra admin center > Users > Create new user > Invite external identity 
-To bulk invite guest users: to invite several guest users at once such as many employees of an external company at once go to Entra admin center > Users > Bulk Operation > Download CSV and fill it out but do not delete or change the first two rows > Upload CSV file. 
-Note: Before inviting guest users make sure your default settings for guest users are properly configured as a security best practice. To find that default guest user default settings go to  Entra admin center > identity > External identities > Overview > External Collobration Settings
+## Administrative Units
 
-Tasks to complete in premium entra on work computer
-1-	Set up entra verifiable credentials 
-2-	Create dynamic groups
-3-	Customize access control and permissions to guest users
+Administrative Units are used to logically group AD resources. For example, you may create one administrative unit for each of your department and then create groups in those AUs.
 
-Terms of Use: In Entra ID you can set up Terms of Use which refers to corporate policies that users must read and accept before they can access certain resources. These terms can be customized by the organization and are used to ensure compliance and security. Example scenarios would like GDPR policy being displayed to user to stay compliant or warning about that the user’s actions are recorded in case something bad happens. 
-To enable Terms of Use go to:
+In terms of access control without using AU and granting a user an administrator role typically provides broad administrative privileges over all users and resources within the tenant, which conflicts with the principle of least privilege.
 
-1-	Entra admin center > Protection > conditional access policy > Terms of Use
-2-	Create a terms of use policy and upload your terms of use PDF document that you want users must accept before being granted access.
-3-	Create conditional access policy and in the grant section select your “Terms of Use” policy. Terms of use requires conditional access policy so while creating terms of use at the bottom you will be asked to either create a conditional access policy now or later.
-Then when the user sign-ins must accept Terms of Use for the first time otherwise the user will not be allowed to sign-in. 
-B2B direct connect requires mutual trust between two Microsoft Entra organizations, enabling access to each other's resources. Both organizations must enable B2B direct connect in their cross-tenant access settings. Once established, users can access external resources with single sign-on using their home organization's credentials. Currently, this capability works with Teams shared channels, allowing users to seamlessly access shared channels without additional sign-ins. 
-So for example, if a company employees need to collaborate with the employees of another company then these two companies can enable B2B direct connect to get access to shared teams channels where they can directly  communicate with each other without evening needing to sign-in to the external company. 
+To address this, administrative units (AUs) are introduced, allowing for more granular delegation of administrative permissions. For example, a helpdesk support technician might only need the ability to reset passwords for certain users.
 
-Entra Connect Authentication Options:
-Entra Connect is used to synchronize an on-prem AD with Cloud based Entra ID. There are mainly three types of authentication options available while Entra Connect is used. 
-1-	Password Hash Synchronization: The is authentication method synchronizes password hashes from on-prem AD to the Entra ID so the users can sign-in with same password both locally and in the cloud. PHS method is easier to setup, lightweight and less complex. On major disadvantage with PHS if used as a primary authentication method is that  the changes in on-prem AD are not automatically synchronized to the Entra ID, meaning it takes a couple minutes but PHS is still very easier to configure and use. 
+By using AUs, you can assign specific users or groups to these units and grant custom administrators permissions to specific helpdesk technicians scoped only to those users or groups within the AU.
 
-2-	Passthrough Authentication: This authentication method validates user credentials directly against the on-prem Active directory domain meaning that each user’s credentials will be checked and validated here before they can access the cloud resources in Entra ID. This method is more complex and requires some agents to be installed on on-prem domain controllers. However this method is more secure as well because with passthrough authentication the servers will be able to directly enforce security policy, account states and more in real time. So if the account is disabled or suspended then security policy will not let it to access the cloud resources. Even when passthrough authentication is used, it is still highly recommended to use password hash synchronization method as a backup because if passthrough authentication agents fails of some reasons to validate user credentials then password hash synchronization will step forward and do the work. Password hash synchronization if enabled as backup can also help in swiftly restoring and recovering infrastructure from a disaster or cyber attack. 
+This ensures that administrators, such as helpdesk technicians, have restricted access limited to the necessary subset of users or resources and not an access over everything in the AD.
 
-3-	Federated Authentication: When you choose this authentication method, Microsoft Entra ID hands off the authentication process to a separate trusted authentication system, such as on-premises Active Directory Federation Services (AD FS), to validate the user’s password. The authentication system can provide other advanced authentication requirements. Examples are smartcard-based authentication or third-party multifactor authentication.
-A federated authentication method is required when customers have an authentication requirement which Microsoft Entra ID doesn't support natively such as smart cards authentication or third-party MFA servers. 
+---
 
-Entra Cloud Sync vs Entra Connect:
-Cloud sync and Entra Connect both do the same work meaning synchronizing on-prem AD infrastructure to the Microsoft Entra ID but Cloud Sync is the newer tool. Compared to Entra Connect, Cloud Sync is more lightweight (leaves less overhead), does the configuration in the cloud, simpler to setup, easier to use and is less complex but as not feature rich as Entra Connect. Cloud Sync also supports multi forest environment. Normally a company has one AD forest but if it buys another company or merges into another company then it needs to handle two forests (its own forest and the forest of another company which is being bought) this is called multi-forest environment. Cloud Sync does not support passthrough authentication. 
+## Types of Users in Entra ID
 
-On the other hand, Entra connect is more feature rich and complex. So if your organization has the resources and require specific features for AD synchronization in a hybrid environment then Entra Connect is recommended instead of Cloud Sync. 
+- **Cloud identities:** these are cloud users meaning users existing in Entra ID which has Entra ID as their source.
+- **Directory-synchronized identities:** These are users which exist in on-prem active directory and are synchronized with Entra ID via Entra Connect. These users have Windows server AD as their source.
+- **Guest Users:** These users exist outside Azure. Examples are accounts from other cloud providers and Microsoft accounts such as an Xbox LIVE account. Their source is Invited user. Guests accounts are normally used for third party collaborators and contractors.
 
-Entra Connect Health: This tool is used to monitor the health of your on-prem identity infrastructure and reports any failures and issues about your on-prem identity infrastructure in the Entra Connect Health Portal. Entra Connect Health enables your on-prem identity infrastructure to maintain a reliable connection with Microsoft online services and Microsoft 365.
-Communication Templates: Microsoft provides communication templates which are predefined instructions that could be used for different purposes. For example, there are templates about how to register Microsoft authenticator for MFA, MFA required, Register for self-service password reset templates and more. You download these templates from communication templates and email it to your corporate users as instructions. 
+**Deleting User:**  
+In Entra ID when a user is deleted, their account gets suspended in a 30 days period and after that period the account is permanently deleted. So within 30 days after deletion you have the opportunity to restore the user account that you have deleted.  
+Go to: `Users > Deleted Users > restore a specific User account`
 
-Configuring Multifactor Authentication: Enabling MFA can reduce account related attacks up to 99% according to Microsoft which means that it is very highly recommended to enable MFA on all accounts.  To enable MFA go to Entra ID admin center > Protection > Multifactor Authentication > click on the link below configure. There are different forms of MFA options available such as SMS, authenticator app, voice call and more. You can further customize your MFA settings in the same place such as configuring account lockouts, Block MFA requests for suspicious or compromised users, Fraud alert or more. 
-MFA is very often configured with conditional access policy. 
-When configuring MFA, you can further restrict new users to configure MFA only from trusted locations such as from office locations by creating a conditional access policy and choosing “Security info registration” and choosing selected corporate networks. This way if other users obtain compromised user’s credentials, then they won’t be able to register MFA from that malicious location. 
+**Assigning Licences:**  
+You can assign licences such as (Microsoft 365 and so on) to a user or a group. If you wanna assign a licence to several users at the same time, create a group and assign it the licences you want.  
+Go to: `Groups > licences > assign licence`
 
-Temporary Access Pass: You can also give legitimate new users a “Temporary Access Pass” which is a temporary code that can be used to register MFA. This will make sure that the authorized user has this access code will be able to register for MFA. For example, you create a new user account in the tenant so the user will have for a password to authenticate, and you give them a temporary access pass to register MFA with. To create a temporary access pass for a user go to users > select a user > authentication methods > Add authentication method. 
+---
 
-Conditional Access Policy:  means that certain conditions must have been fulfilled before a user could be granted access to sign-in or access an application. For example, conditions could be user signing-in from untrusted networks, trying to access a specific application, countries, access requests from specific operating systems, user risk level and more. These are factors that trigger a conditional access policy. Conditional access when all conditions are met either require the user to use MFA or block access. 
+## Entra ID Groups
 
-Configuring Conditional Access Policy: 
-When configuring conditional access policy we can either create a policy from scratch or use ready-to-go template. 
-Creating a CA policy from scratch: Go to Entra admin center > Protection > Conditional Access Policy > create new policy. Then configure your conditional access policy based on your requirements for example which actions should trigger a CA and what measure should be taken such as block or require MFA. Remember that you must choose a specific application or all application in the conditional access policy to work. Using CA policy you can also configure from which devices or applications should an access request come from meaning you can block access requests from all other applications or devices that you do not specify. 
+There are two types of groups in Entra namely:
+
+1. **Security Groups:**  
+   Are created to manage user permissions and access control by using security policies. It is the most commonly used type of Entra Groups.
+
+2. **Office 365 Groups:**  
+   Are created to provide collaboration opportunities by giving members access to shared mailbox, calendar, SharePoint, files and so on.
+
+**Entra Group Membership Types**  
+While creating groups they could either be dynamic or assigned meaning when creating a group you must choose how to add users manually or dynamically.
+
+- **Assigned Group Type:**  
+  Assign groups mean that you add users manually to the newly created group by clicking on add members.
+
+- **Dynamic Group Type:**  
+  Users are added dynamically based on commands (rules). For example, to create a group for all inactive users, instead of manually searching and adding them one by one, you can create a dynamic group with a rule that automatically includes all inactive users.
+
+  You then apply the policy to the group, which in turn applies to all members. This saves time, effort, and hassle. If you are adding a single user to the group then of course it's better to use the assign type where you add the user manually by yourself.
+
+---
+
+## Security Defaults
+
+Security defaults are basic identity security settings recommended by Microsoft. When enabled, these recommendations will be automatically enforced in your organization. Administrators and users will be better protected from common identity-related attacks.
+
+If your company is using free tier of Entra ID then you can use security defaults which will enforce MFA and other security measures on users. But if the company has premium Entra ID licence then it is more secure to use conditional access policy instead of security defaults.
+
+By default, security defaults are enabled for newly created Entra ID tenants.
+
+> **Important:**  
+> If your corporate wants to create a conditional access policy then security default must have been disabled first.  
+> So security defaults must always be disabled before creating a conditional access policy.
+
+The settings which are automatically enforced could be MFA, conditional access, blocking legacy authentication protocols and more. If these settings such as MFA and conditional access are not activated then security defaults will recommend to activate them.  
+Go to: `Entra ID > Properties > Security Default`
 
 
-Named Locations: To block countries, specific IP addresses, or IP ranges in a Conditional Access (CA) policy, you can create a named location. For example, if your company does not operate in certain countries and you do not expect any activity from those regions, you can list these countries in a named location and block them. Similarly, you can block specific IP addresses or ranges by creating a named location for IPs associated with Advanced Persistent Threats (APT) or other threat actors. First, immediately block these threat actor-related IP addresses in the CA policy by creating a named location, and then block them in the firewall.
-Exclude the following users (accounts): when creating a CA policy, make sure to exclude the break-the-glass accounts (such as global admin), service accounts and service principles because if everything gets locked or inaccessible as a result of ransomware or similar than break-the-glass accounts must not be hindered by MFA or CA policy. 
 
-Service accounts and service principals: A service account such as  the Microsoft Entra Connect Sync Account also needs to be excluded from CA policy.  Service accounts are non-interactive accounts that are not tied to any particular user. They are normally used by back-end services allowing programmatic access to applications, but they are also used to sign in to systems for administrative purposes. Service accounts like these should be excluded since MFA can't be completed programmatically. Calls made by service principals are not blocked by Conditional Access.
-If your organization has these accounts in use in scripts or code, consider replacing them with managed identities. As a temporary workaround, you can exclude these specific accounts from the baseline policy.
-Conditional Access Deep Dive:
-When conditional access targets a directory role such as AI administrator or groups then it is only applied when a sign-in token is issued by Entra. For example, Such CA policy will not apply to groups or directory roles with existing tokens. Meaning, the user or service account have to resign-in or have their sessions revoked. 
-Authentication Context: Authentication Context is a powerful feature in Microsoft Entra Conditional Access that enables fine-grained access control within cloud applications. Instead of applying access policies to the entire app, it allows organizations to target specific actions or sensitive content. For example, if a user attempts to view, edit, share, or download a sensitive document in SharePoint, you can require that the request comes from a managed device. This ensures secure access without blocking legitimate use of the rest of the app. Without Authentication Context, Conditional Access policies apply at the app level, meaning you must either allow or block access to the entire application. This can lead to overly restrictive policies that hinder productivity or under-protective ones that expose sensitive data. By using Authentication Context, organizations can apply Conditional Access policies to specific operations or content, striking a balance between security and usability.
-Note: To use Authentication context in CA policy you must create one first and then use it in CA policy by navigating to CA policy section:
- Conditional Access Policy > Target Resources > from drop down list select > Authentication context. 
+## Guest Accounts (External Identities)
 
-Creating a emergency account in AD: 
-Emergency accounts also called break the glass accounts are important to be set up and configured because in case of disaster such as ransomware and such, these accounts can help restore and recover the infrastructure.  An emergency account has the global administrator privileges which means that a such account can  literally do anything in the network. 
-To create an emergency account, simply create a new user in the Entra ID and give it a global administrator role. At least one of the emergency accounts should not have MFA and conditional access because when an attack strikes then MFA and conditional access may hinder the emergency account to start restoring and recovering the infrastructure. 
+Guest accounts in Entra ID are also called external identities. These users do not initially exist in your tenant but are added as guest users when invited, meaning a guest account will be automatically created for a user when the user is invited.
 
-Best practices while configuring CA policy: organizations should avoid the following configurations:
-For all users, all cloud apps:
-•	Block access - This configuration blocks your entire organization.
-•	Require Hybrid Microsoft Entra domain joined device - This access-blocking policy also has the potential to block access for all users in your organization if they don't have a hybrid Microsoft Entra joined device.
-•	Require app protection policy - This access-blocking policy also has the potential to block access for all users in your organization if you don't have an Intune policy. If you're an administrator without a client application that has an Intune app protection policy, this policy blocks you from getting back into portals such as Intune and Azure.
-For all users, all cloud apps, all device platforms:
-•	Block access - This configuration blocks your entire organization.
+You can add guest users to groups and apply settings to them just like a normal member user of your tenant. This functionality is part of Microsoft's B2B collaboration.
 
-Note: so when configuring CA policy and you have select all users, all groups or all devices, make sure and double check that no important users or service accounts will be locked out since there is higher chance then that the entire organization gets locked out.
+Guest users have very limited access, restricted to resources explicitly shared with them. They use their own credentials to sign in and access these shared resources. Guest accounts are denoted by `#EXT#` in their usernames.
 
-Revoking User Sessions: When a user’s session is revoked it will require the user to re-sign-in from all devices. Simply go to the user page and then click on revoke sessions.  A rule of thumb is that everything that needs to be done on a user will be available in the specific user’s page and everything that needs to be done on a group will be available in the specific group’s page. If you want to block a user so you can either go to the specific user page and disable their account which will block the user or you can create a group and apply some conditional access policy to it so then the users of that group will be blocked automatically. Like below:
-1-	Create a group such as blocked-accounts
-2-	Create a conditional access policy for the blocked-accounts group
-3-	Add users to it to be blocked
+A scenario for guest users could be, for example, when you need to have a shared Teams channel between your and another company’s employees. In that case, you will invite the other company users to your tenant as guest users and share the preferred resources with them (such as Teams channel).
 
-FIDO2 (Fast Identity Online): is a Passwordless authentication method which uses security keys instead of passwords that could be stored on a USB stick, Bluetooth or NFC supported devices (smart cards). These security keys are given certificates for the first time so when the user uses the security key they will be authenticated across corporate resources. It is similar to PKI since both use some sort of certificates to authenticate users or services, but they differ in nature. 
-FIDO2 is considered as the most secure authentication method and is often used in military, government and other highly security sensitive environments because it eliminates the risk password-related threats since no usernames or passwords are used. FIDO2 is by nature two-factor authentication one factor to access the device such as pin code or fingerprint and the second factor is the FIDO2 security key which is used for authentication. 
-Configuring FIDO2: configuring FIDO2 involves two steps. 
-1-	First activiating it in Entra ID Protection > Authentication Methsds > Authentication Method Policy. Click enable and choose target users. 
-2-	Second step is to manage user registration and FIDO2 security keys. 
-1-	Visit https://myprofile.microsoft.com
-2-	Click on security info 
-3-	If the user has already a MFA registered then will be able to set up FIDO2 security key immediately otherwise they would need to register MFA first. 
+To restrict the default access settings of guest users:
 
-OATH (Open AuTHentication) one time password tokens: In a corporate environment, employees use OATH-compliant OTP tokens to access the company's VPN for remote work. Each employee has a hardware OTP token or a software-based OTP generator installed on their mobile device. When logging in to the VPN, users enter their standard credentials along with the one-time password generated by their OTP token. This two-factor authentication process ensures secure access to the corporate network, even when employees are working remotely.
-Self Service Password Resets: enabling self-service password reset lets users to reset or change their passwords by themselves without the help of any admin or helpdesk. This functionality increases efficiency since users can unlock their account themselves and also saves time and resources for the helpdesk guys. 
-Configuring a self service password resets: to set up self service password reset functionality for users so normally:
+> Go to:  
+> `Entra admin center > Identity > External identities > Overview > External Collaboration Settings`
 
-1-	Create a group for users who you want to be able to do self service password reset
-2-	Go to Entra admin center > protection > password reset> select 
-The user has to register for self service password reset. They have to visit myprofile page at https://myprofile.microsoft.com. After that a “more information is required” window will pop up  that’s where the user will be able to register for self service password reset. After that if the user ever forgets their password they can easily reset it by themselves. p 
+---
 
-Devices that should not be internet facing: The following devices should never be exposed to internet directly because if they ever generate internet-related traffic then that could be a sign of compromise or bad security practice. Such devices are, domain controllers, industrial control systems such as IoT and OT (sensors), database servers, file shares, network attached storage and more. If these devices ever generate alerts such as brute-force or scanning  then that should be investigated seriously. 
+## Inviting Guest Users
 
-Entra ID Password Protection: While users create weak and banned passwords, password protection will block those requests and the user will not be able to create a weak or banned password.  This feature enhances security since users will not be able to use easily guessable passwords. However accounts that are already before the password protection is enabled, will not be affected unless they update their password at some point. 
-To enable password protection go to:
+You can invite partners or employees of other companies to your shared resources (applications, etc.) in two ways:
 
-1-	Entra Admin Center > Protection > Authentication Methods > password protection 
-2-	Enable the policy by selecting Enforced. 
+### Individually Inviting a Guest User
 
-Smart Lockouts: is a great security feature that protects users from  brute force and credential stuffing attacks. Smart lockout  is always enabled and will lockout users after there is some suspicious behaviour detected from the user’s sign-in for example multiple failed attempts (which 10 by default) and etc. 
-Smart lockouts differ from fixed lockouts because It tracks both successful and failed login attempts and considers the IP address of login attempts to differentiate between legitimate and malicious activity. Administrators can set thresholds for failed attempts and lockout durations. This feature enhances security while minimizing user lockouts. 
-3-	To customize smart lockouts settings go to Entra Admin Center > Protection > Authentication Methods > password protection and then enter your preferred lockout settings. 
+> Go to:  
+> `Entra admin center > Users > Create new user > Invite external identity`
 
-Persistent Browser Session: A persistent browser session allows users to remain signed in after closing and reopening their browser window. The Microsoft Entra ID default for browser session persistence allows users on personal devices to choose whether to persist the session by showing a “Stay signed in?” prompt after successful authentication.
+### Bulk Inviting Guest Users
 
-Sign-in Frequency: In a Conditional Access (CA) policy, we can configure session controls for a user or account, specifying a time period after which the user needs to sign in again. For example, the default is 90 days, but we can change this to any period we want, such as every 8 hours (every working day), or every week. The user's session will remain active (user will be signed-in) until that time period expires, at which point they will be required to sign in again.
-To configure sign-in frequency meaning to require the user back again go to conditional access policy > create a new policy > session > sign-in frequency and choose your preferred time period. 
+> Go to:  
+> `Entra admin center > Users > Bulk Operation > Download CSV`  
+> Fill out the CSV file but **do not delete or change the first two rows**  
+> Upload the CSV file
 
-Identity Protection: Identity protection is used to detect, investigate, and remediate identity (Users, accounts) related risks. There are two types of identity risks covered by identity protection namely User Risks and Sign-in Risks. In other words, identity protection provides two services to protect users and sign-ins.   
-1-	User Risks: means that the user is probably compromised (user demonstrate strange behaviour). 
-2-	Sign-in Risks: means the probability that the sign-in is unauthorized and was performed by some other than the user. 
+**Note:**  
+Before inviting guest users, make sure your default settings for guest users are properly configured as a security best practice.
 
-To be more specific, these risks targeting users and sign-ins are:
--	 Anonymous IP address usage
--	Password spray attacks
--	Leaked credentials
--	and more...
-Identity protection is very powerful and uses heuristics, machine learning and third-party products to detect identity risks. Heuristics means arriving at a solution by trying different actions to see if they produce the result that is wanted, rather than using strict rules.
-Configuring User Risk Policy: user risk policy can be configured in either CA policy or risk policy itself in Entra Protection. The best option is to configure it in CA policy because there are more controls. So to configure a User Risk Policy simply:
-1-	Create a CA policy > Conditions > User Risks 
-2-	Set to medium and high because choosing low as well, will generate a lot of false positives and cause user interruptions. 
-3-	Then choose grant in access control > Require MFA and then Secure password change
-4-	Then go to sessions select sign-in frequency > and choose every time so the user needs to sign-in every time so the user immediately must reauthenticate.  
-5-	Test the policy by saving it in report-only mode or directly enabling it. 
+> Go to:  
+> `Entra admin center > Identity > External identities > Overview > External Collaboration Settings`
 
-Best practice for User Risk Policy: When configuring a User Risk Policy (assuming a user has been compromised), you can choose to either block the user or require multi-factor authentication (MFA) and a password change. Microsoft recommends not blocking the user but instead requiring them to complete MFA and change their password. This reduces administrative effort, as the user can regain access to their account themselves. This process, known as self-remediation, does not require an admin to intervene. However, for self-remediation to work, all target users must be registered for MFA and have Self-Service Password Reset enabled; otherwise, sign-ins will be blocked.
+---
+
+## Tasks to Complete in Premium Entra on Work Computer
+
+1. Set up Entra verifiable credentials  
+2. Create dynamic groups  
+3. Customize access control and permissions to guest users
+
+---
+
+## Terms of Use
+
+In Entra ID, you can set up Terms of Use which refers to corporate policies that users must read and accept before they can access certain resources. These terms can be customized by the organization and are used to ensure compliance and security.
+
+Example scenarios include:
+
+- GDPR policy being displayed to users to stay compliant  
+- Warning that user actions are recorded in case of misuse
+
+### To Enable Terms of Use:
+
+1. Go to:  
+   `Entra admin center > Protection > Conditional Access Policy > Terms of Use`
+2. Create a Terms of Use policy and upload your PDF document
+3. Create a Conditional Access Policy and in the **Grant** section, select your “Terms of Use” policy
+
+> Terms of Use requires a Conditional Access Policy.  
+> While creating Terms of Use, you will be asked to either create a Conditional Access Policy now or later.
+
+When users sign in, they must accept the Terms of Use for the first time. Otherwise, they will not be allowed to sign in.
+
+---
+
+## B2B Direct Connect
+
+B2B Direct Connect requires mutual trust between two Microsoft Entra organizations, enabling access to each other's resources. Both organizations must enable B2B Direct Connect in their cross-tenant access settings.
+
+Once established, users can access external resources with single sign-on using their home organization's credentials.
+
+Currently, this capability works with **Teams shared channels**, allowing users to seamlessly access shared channels without additional sign-ins.
+
+**Example Scenario:**  
+If employees from two companies need to collaborate, both companies can enable B2B Direct Connect to access shared Teams channels and communicate directly without needing to sign in to the external company.
+
+---
+
+## Entra Connect Authentication Options
+
+Entra Connect is used to synchronize an on-prem AD with cloud-based Entra ID. There are three main authentication options:
+
+### 1. Password Hash Synchronization (PHS)
+
+- Synchronizes password hashes from on-prem AD to Entra ID  
+- Users can sign in with the same password locally and in the cloud  
+- Easier to set up, lightweight, and less complex  
+- **Limitation:** Changes in on-prem AD are not instantly synchronized to Entra ID
+
+### 2. Passthrough Authentication
+
+- Validates user credentials directly against on-prem AD  
+- Requires agents installed on domain controllers  
+- More secure: enforces security policies and account states in real time  
+- **Recommendation:** Use PHS as a backup in case agents fail
+
+### 3. Federated Authentication
+
+- Entra ID hands off authentication to a trusted system like AD FS  
+- Supports advanced authentication methods (e.g., smartcards, third-party MFA)  
+- Required when Entra ID doesn’t support specific authentication needs natively
+
+---
+
+
+## Entra Cloud Sync vs Entra Connect
+
+Cloud Sync and Entra Connect both synchronize on-prem AD infrastructure to Microsoft Entra ID, but Cloud Sync is the newer tool.
+
+**Cloud Sync:**
+
+- More lightweight (less overhead)
+- Configuration is done in the cloud
+- Simpler to set up and use
+- Supports multi-forest environments
+- Does **not** support passthrough authentication
+- Less feature-rich than Entra Connect
+
+**Multi-Forest Environment:**  
+Occurs when a company merges with or acquires another company, requiring synchronization across multiple AD forests.
+
+**Entra Connect:**
+
+- More feature-rich and complex
+- Recommended for organizations needing advanced hybrid AD synchronization features
+
+---
+
+## Entra Connect Health
+
+Used to monitor the health of your on-prem identity infrastructure. Reports failures and issues in the Entra Connect Health Portal.
+
+Helps maintain reliable connections with Microsoft online services and Microsoft 365.
+
+---
+
+## Communication Templates
+
+Microsoft provides predefined communication templates for various purposes:
+
+- Registering Microsoft Authenticator for MFA
+- MFA requirement notifications
+- Self-service password reset instructions
+
+These templates can be downloaded and emailed to corporate users.
+
+---
+
+## Configuring Multifactor Authentication (MFA)
+
+Enabling MFA can reduce account-related attacks by up to 99% according to Microsoft.
+
+> Go to:  
+> `Entra ID admin center > Protection > Multifactor Authentication > Configure`
+
+**MFA Options:**
+
+- SMS  
+- Authenticator app  
+- Voice call  
+- Account lockouts  
+- Fraud alerts  
+- Blocking suspicious MFA requests
+
+**Trusted Locations:**  
+Restrict MFA registration to trusted office locations using Conditional Access Policy:
+
+> Choose:  
+> `Security info registration > Selected corporate networks`
+
+---
+
+## Temporary Access Pass
+
+A temporary code for new users to register MFA securely.
+
+**Example:**  
+Create a new user → assign password → issue Temporary Access Pass for MFA registration.
+
+> Go to:  
+> `Users > Select a user > Authentication methods > Add authentication method`
+
+---
+
+## Conditional Access Policy (CA)
+
+Conditional Access means access is granted only when specific conditions are met.
+
+**Trigger Conditions:**
+
+- Untrusted networks  
+- Specific applications  
+- Geographic location  
+- Operating systems  
+- User risk level
+
+**Actions:**
+
+- Require MFA  
+- Block access
+
+---
+
+## Configuring Conditional Access Policy
+
+You can create a policy from scratch or use a template.
+
+> Go to:  
+> `Entra admin center > Protection > Conditional Access Policy > Create new policy`
+
+**Configuration Steps:**
+
+- Define trigger conditions  
+- Choose actions (block or require MFA)  
+- Specify applications  
+- Define allowed devices or apps
+
+
+## Named Locations
+
+Used to block:
+
+- Countries  
+- Specific IP addresses  
+- IP ranges
+
+**Example:**  
+Block countries where your company doesn't operate or IPs linked to Advanced Persistent Threats (APT).
+
+> First block in CA policy, then in firewall.
+
+
+
+## Exclude the Following Users (Accounts)
+
+Always exclude:
+
+- Break-the-glass accounts (e.g., global admin)  
+- Service accounts  
+- Service principals
+
+**Reason:**  
+To prevent lockout during ransomware or other incidents.
+
+
+
+## Service Accounts and Service Principals
+
+- Non-interactive accounts used by backend services  
+- Cannot complete MFA programmatically  
+- Should be excluded from CA policies
+
+**Recommendation:**  
+Replace with managed identities if used in scripts or code.
+
+
+
+
+> 💡 **Tip:** CA policies targeting directory roles or groups apply only when a new sign-in token is issued. Existing sessions are unaffected until re-sign-in or session revocation.
+
+---
+
+## Authentication Context
+
+Enables fine-grained access control within cloud apps.
+
+**Example:**  
+Require managed device to view or download sensitive SharePoint documents.
+
+> Go to:  
+> `Conditional Access Policy > Target Resources > Authentication context`
+
+**Benefit:**  
+Avoids overly restrictive or under-protective policies by targeting specific actions.
+
+---
+
+## Creating an Emergency Account in AD
+
+Emergency accounts (break-the-glass accounts) are vital for disaster recovery.
+
+**Steps:**
+
+1. Create a new user in Entra ID  
+2. Assign global administrator role  
+3. Ensure at least one account is **not** subject to MFA or CA policies
+
+---
+
+## Best Practices for CA Policy Configuration
+
+Avoid these configurations:
+
+### For All Users, All Cloud Apps:
+
+- Block access  
+- Require Hybrid Microsoft Entra domain joined device  
+- Require app protection policy (without Intune)
+
+### For All Users, All Cloud Apps, All Device Platforms:
+
+- Block access
+
+**Note:**  
+Always double-check exclusions to prevent locking out the entire organization.
+
+---
+
+
+## Revoking User Sessions
+
+When a user’s session is revoked it will require the user to re-sign-in from all devices.  
+Simply go to the user page and then click on **Revoke Sessions**.
+
+> **Rule of thumb:**  
+> Everything that needs to be done on a user will be available in the specific user’s page, and everything that needs to be done on a group will be available in the specific group’s page.
+
+To block a user:
+
+- Go to the specific user page and disable their account  
+- Or create a group and apply a Conditional Access Policy to block users in that group
+
+**Steps:**
+
+1. Create a group such as `blocked-accounts`  
+2. Create a Conditional Access Policy for the `blocked-accounts` group  
+3. Add users to it to be blocked
+
+---
+
+## FIDO2 (Fast Identity Online)
+
+FIDO2 is a passwordless authentication method using security keys instead of passwords.  
+These keys can be stored on USB sticks, Bluetooth, or NFC-supported devices (smart cards).
+
+Security keys are issued certificates for first-time use and authenticate users across corporate resources.  
+FIDO2 is similar to PKI but differs in nature.
+
+**Why FIDO2 is Secure:**
+
+- Eliminates password-related threats  
+- No usernames or passwords used  
+- Two-factor by design:  
+  - Factor 1: Access device (PIN or fingerprint)  
+  - Factor 2: FIDO2 security key
+
+**Common Use Cases:**  
+Military, government, and highly sensitive environments
+
+### Configuring FIDO2
+
+**Step 1:**  
+Activate in:  
+`Entra ID > Protection > Authentication Methods > Authentication Method Policy`  
+Click Enable and choose target users
+
+**Step 2:**  
+Manage user registration and FIDO2 security keys:
+
+1. Visit [https://myprofile.microsoft.com](https://myprofile.microsoft.com)  
+2. Click on **Security Info**  
+3. If MFA is already registered, user can set up FIDO2 immediately; otherwise, register MFA first
+
+---
+
+## OATH One-Time Password Tokens
+
+In corporate environments, employees use OATH-compliant OTP tokens to access VPNs remotely.
+
+Each employee has:
+
+- A hardware OTP token  
+- Or a software-based OTP generator on their mobile device
+
+**Login Process:**
+
+- Enter standard credentials  
+- Enter one-time password from OTP token
+
+This two-factor authentication ensures secure access to the corporate network.
+
+---
+
+## Self-Service Password Resets
+
+Allows users to reset or change their passwords without admin or helpdesk support.
+
+**Benefits:**
+
+- Increases efficiency  
+- Saves helpdesk time and resources
+
+### Configuring Self-Service Password Reset
+
+1. Create a group for users allowed to reset passwords  
+2. Go to:  
+   `Entra Admin Center > Protection > Password Reset > Select`
+
+**User Registration:**
+
+- Visit [https://myprofile.microsoft.com](https://myprofile.microsoft.com)  
+- A “More information is required” window will appear  
+- User registers for self-service password reset  
+- After registration, users can reset their password anytime
+
+---
+
+## Devices That Should Not Be Internet-Facing
+
+These devices should never be exposed directly to the internet:
+
+- Domain controllers  
+- Industrial control systems (IoT, OT sensors)  
+- Database servers  
+- File shares  
+- Network-attached storage
+
+**Warning:**  
+If these devices generate internet-related traffic or alerts (e.g., brute-force, scanning), investigate immediately.
+
+---
+
+## Entra ID Password Protection
+
+Blocks users from creating weak or banned passwords.
+
+**Note:**  
+Accounts created before enabling password protection are unaffected unless passwords are updated.
+
+### Enabling Password Protection
+
+1. Go to:  
+   `Entra Admin Center > Protection > Authentication Methods > Password Protection`  
+2. Enable the policy by selecting **Enforced**
+
+---
+
+## Smart Lockouts
+
+Protects users from brute-force and credential stuffing attacks.
+
+**Features:**
+
+- Always enabled  
+- Locks out users after suspicious behavior (e.g., 10 failed attempts)  
+- Tracks both successful and failed logins  
+- Considers IP addresses to differentiate legitimate vs. malicious activity
+
+### Customizing Smart Lockouts
+
+> Go to:  
+> `Entra Admin Center > Protection > Authentication Methods > Password Protection`  
+> Enter preferred lockout settings
+
+---
+
+## Persistent Browser Session
+
+Allows users to remain signed in after closing and reopening their browser.
+
+**Default Behavior:**  
+Users on personal devices see a “Stay signed in?” prompt after successful authentication.
+
+---
+
+## Sign-In Frequency
+
+In Conditional Access (CA) policies, configure session controls to require re-authentication after a set time.
+
+**Examples:**
+
+- Default: 90 days  
+- Custom: Every 8 hours, every week, etc.
+
+### Configuring Sign-In Frequency
+
+> Go to:  
+> `Conditional Access Policy > Create New Policy > Session > Sign-In Frequency`  
+> Choose preferred time period
+
+---
+
+## Identity Protection
+
+Detects, investigates, and remediates identity-related risks.
+
+**Two Types of Risks:**
+
+1. **User Risks:** User may be compromised  
+2. **Sign-In Risks:** Sign-in may be unauthorized
+
+**Risk Indicators:**
+
+- Anonymous IP usage  
+- Password spray attacks  
+- Leaked credentials  
+- And more...
+
+**Technology Used:**
+
+- Heuristics  
+- Machine learning  
+- Third-party products
+
+### Configuring User Risk Policy
+
+Best configured via Conditional Access Policy:
+
+1. Create CA Policy > Conditions > User Risks  
+2. Set to **Medium** and **High** (avoid Low to reduce false positives)  
+3. Access Control > Grant > Require MFA and Secure Password Change  
+4. Sessions > Sign-In Frequency > Every Time  
+5. Test in **Report-Only Mode** or enable directly
+
+---
+
+## Best Practice for User Risk Policy
+
+Instead of blocking compromised users:
+
+- Require MFA  
+- Require password change
+
+**Why:**  
+Allows self-remediation without admin intervention
+
+**Requirements for Self-Remediation:**
+
+- Users must be registered for MFA  
+- Self-Service Password Reset must be enabled
+
+Otherwise, sign-ins will be blocked.
+
+---
 
 Configuring Sign-in Risk Policy: sign-in risk policy is configured the same way as User Risk policy, but recommendation is to not block the sign-ins but rather require MFA. Because blocking sign-ins may prevent real user from signing-in. MFA will almost guarantee that the sign-in is authorized. So to configure sign-in risk policy: 
 1-	Create a CA policy > Conditions > Sign-in Risks 
@@ -209,54 +680,230 @@ Azure Role Based Access Control (RBAC): RBAC is an authorization system which gi
 -	Service Principal - Assign a role to a service principal when you want to grant an application access to an Azure resource.
 -	Managed Identity - Use the managed identity when you want an application to manage credentials for authentication.
 
-Roles: there are different types of roles that we can assign to users, groups and managed identities for example built-in roles and custom roles as follows:
-Built-in Azure Roles
-•	Owner - full access to all resources.
-•	Contributor - Can create and manage all types of Azure resources, but can't grant access.
-•	Reader - Can view the available Azure resources.
-•	User Access Administrator - Assign access to Azure resources.
-•	Other task specific roles, like Virtual Machine Contributor, can be assigned.
+## Roles
 
-Custom Roles in Azure: We can create custom roles either from scratch or by using built-in roles as templates, customizing them to meet specific requirements. These custom roles can then be assigned to users, groups, or managed identities. 
-Configuring azure RBAC: to configure RBAC (azure role based access control) simply go to the resource (workload), resource group, subscription, or management group that you want to control access to then select access control (IAM) then select Add role assignment and then select either role from  Job function roles or Privileged administrator roles and afterwords select member (whom you want to control access for) and click next. 
+There are different types of roles that we can assign to users, groups, and managed identities—built-in roles and custom roles.
 
-Configuring Entra Roles: To assign a user or a group (multiple users) a built-in Entra role simply go to the user or group view and select assigned roles and new role by clicking on add assignment then choose a built role. 
-On the other hand, to add a custom Entra role (role from scratch) simply go to Roles and administrators then select New custom role and create your custom role. Now if you want to assign this custom role to a user or a group then you will go to user or group page and assign them this custom role which you will find in all available roles there for the user or group. 
+### Built-in Azure Roles
 
-Managed Identities: while building applications, developers need to store secrets, keys, certificates and credentials in a safe place for security reasons. Developers cannot store such credentials in the applications themselves because that will cause some security risks but if they do store them elsewhere then how the application will securely access those credentials to operate normally. This is where managed identities come and eliminate the need for developers to manage these credentials. An admin would normally store such credentials in Azure Key Vault and then create a managed identity for the application to access those Key Vault credentials. 
-Managed identities are basically used for services and applications to authenticate themselves while accessing other resources. For example, a virtual machine or a web application may need to access azure storage to store the data in so then we will need managed identities to extract credentials from azure key vault so that the virtual machine or web application can authenticate to the azure storage. In short, when a service or application needs to authenticate, we will need to use managed identities to perform authentication. Managed identities only support Entra ID authentication. 
+- **Owner** – Full access to all resources  
+- **Contributor** – Can create and manage all types of Azure resources, but can't grant access  
+- **Reader** – Can view the available Azure resources  
+- **User Access Administrator** – Assign access to Azure resources  
+- **Other task-specific roles** – Like Virtual Machine Contributor
 
-Access Control for Key Vaults: Azure Key Vaults are used to securely store application credentials such key, certificates and secrets. These credentials are then accessed by applications using managed identity. In order for credentials to be secure in the Key Vaults we must only let authorized users and services to access them or in other words access control must be applied. To apply access control for azure Key Vaults we can either use Key Vault access policy or RBAC policy (Recommended). You can any time change between these policies for your Key Vault. 
-1-	Configuring Key Vault access policy: simply go the resource (which is Azure Key Vault in this case) and the select access control (IAM) > vault access policy > create one 
-2-	Configuring RBAC for Key Vaults: RBAC is configured for Key Vaults the same way RBAC is configured for any other resource. That is to say, go the Azure Key Vault > access control (IAM) > add role Assignment > select managed identity or user. 
+### Custom Roles in Azure
 
-All SaS applications are listed in Enterprise applications sections in Entra ID. 
+Custom roles can be created from scratch or by using built-in roles as templates. These roles can be customized to meet specific requirements and assigned to users, groups, or managed identities.
 
-Single Sigh-Ons (SSO): to configure single sign-ons go to Entra ID > enterprise applications > create a new application or register your custom one > click on single sign-on > SSO method (SAML or OIDC) and configure. Some credentials you will need to copy from the service provider (application you wanna register SSO for).
+### Configuring Azure RBAC
 
-Entitlement Management:  In a corporate environment different users have different roles, permissions, licences (applications), groups and more, over time these roles, access, permissions and other configuration changes as the organization evolves which makes it really to keep track of all these configurations for example which user has what access and role. To solve that issue meaning to keep track of all access to all resources and roles we can use Entitlement Management. 
-Entitlement management in Entra ID is a feature that allows organizations to group together resources and manage user access to those resources through automated workflows, policies, and role-based access controls. Entitlement management helps users to request and get the right access through an automated workflow for specific resources. Entitlement management also helps in automatically revoking access when it is no longer is needed such as temporary external users or users who have resigned. 
-Use catalogs in Entitlement management to grant users access to a group of resources for example you may create a catalog (Onboarding) for onboarding new employees where you will add all the applications and resources the new employees would need to access. You can also create a catalog for external users (partners, collaborators) to let them access specific set of applications that required for their collocation. 
-We can also use Resource Groups for bundling together resources and managing access control but Resource Groups are used in terms of infrastructure such as creating a resource group for WebAppDeployment where you will group together resources such as database server, web server and other deployment settings and configure access control. However for Entitlement management we create a catalog in a resource group for external users and add all applications the external users need to access.  
-Access package is the bundle of application that you wanna manage access for in a catalog. 
-To create a catalog go to Identity and Governance > Entitlement Management > create a Catalog > then click on access packages > add all applications you wanna manage access for and select the newly created catalog for it.  
-Connected Organizations: With entitlement management, you can collaborate with people outside your organization. If you frequently collaborate with many users from specific external organizations, you can add those organization's identity sources as connected organizations. Having a connected organization simplifies how more people from those organizations can request access.
+To configure RBAC (Azure Role-Based Access Control):
 
-Access Reviews: 
-In a corporate environment there are hundreds or even thousands of users that are assigned different roles, groups, applications, devices and etc. Over time it gets complicated and the access they have to resources is forgotten about because employees may change positions, quit work and they may still have access to their previous resources. This unmonitored user access raises different concerns such as security and compliance. This is where Access Reviews comes in.
-Access reviews enable organizations to control and audit users’ access to different resources. For example, we can let users to review their access by themselves (self-access review) to see whether they need the access they are given any longer or not. This can be done either periodically or one time. Access reviews can either be Azure roles (Azure RBAC) or Entra Roles. 
-We can also delegate reviews of user access to other staff such as their managers or IT admins to periodically or one time review whether the user has appropriate access or is over privileged by having more than necessary access. 
-The reviewer of the user’s access may choose to either revoke over privileged or unused user access (if that is the case) or let the user have continued access to the resource. 
-Configuration: Access reviews are configured in Identity Governance within Entra ID admin center. 
-3 types of access views: Access reviews can either be configured for user access to applications, teams + groups or Entra ID roles and Azure Roles. In other words, we can set up access reviews for users’ access to different application, groups or roles (both Azure roles and Entra roles). If the user is no longer supposed to have access to those resources (application, groups and roles) then we can revoke access. 
-Privileged Identity Management (PIM): PIM is used to give temporarily higher privileges to a user. For example, a user may need admin level of privileges to perform a specific task but you do not wanna grant them admin role since that task may only happen once so you may therefore set up PIM for the user so the user can get higher privileges temporarily. 
-You can configure PIM for both Entra ID roles and Azure Roles. PIM for Entra Roles will give the user higher privileges to perform Entra related tasks such as user management, CA and more. Whereas PIM for azure roles will give the user higher privileges for azure resources such as VMS, workloads and more. 
-Configuring PIM for Entra roles: Go to entra admin > identity governance > privileged identity management > Microsoft Entra roles > Settings > here you can configure settings for your actual role. 
-Then go to assignments > and complete the configuration.  
-Configuring PIM for Groups: Sometimes it’s better to configure PIM for groups instead of individual users for efficiency matters. For example, you have several security analysts from a partner company which provides SOC services so the easiest and most secure way would be to create a group for those security analysts and assign them a role preferable “Security Operator” role then enable PIM following adding assignment. 
-Here is the procedure: 
-1.	Create a group and assign it a role such as “security operator” > click on Privileged Identity Management > Enable PIM for this group > Add Assignment > select Memeber > and Next. 
+1. Go to the resource (workload), resource group, subscription, or management group  
+2. Select **Access Control (IAM)**  
+3. Click **Add Role Assignment**  
+4. Select a role from **Job Function Roles** or **Privileged Administrator Roles**  
+5. Select the member (user/group/identity)  
+6. Click **Next**
 
-Since the role will give granted to the group so whenever a PIM user logs in and activates their role which is member then they will automatically inherit the assigned role of that group which could be any role such as security operator, user admin and so on. 
+---
 
-Remember, clicking on setting you configure settings for PIM such as duration, MFA and such. 
+## Configuring Entra Roles
+
+### Assigning Built-in Entra Roles
+
+1. Go to the user or group view  
+2. Select **Assigned Roles**  
+3. Click **Add Assignment**  
+4. Choose a built-in role
+
+### Creating and Assigning Custom Entra Roles
+
+1. Go to **Roles and Administrators**  
+2. Select **New Custom Role**  
+3. Create your custom role  
+4. Assign it to a user or group via their page
+
+---
+
+## Managed Identities
+
+When building applications, developers need to store secrets, keys, certificates, and credentials securely. These should not be stored in the application code due to security risks.
+
+**Solution:**  
+Use **Managed Identities** to eliminate the need for developers to manage credentials.
+
+**Typical Setup:**
+
+- Admin stores credentials in **Azure Key Vault**  
+- Create a **Managed Identity** for the application  
+- Application accesses Key Vault securely
+
+**Use Cases:**
+
+- Virtual machines or web apps accessing Azure Storage  
+- Services authenticating to other resources
+
+> Managed identities only support **Entra ID authentication**
+
+---
+
+## Access Control for Key Vaults
+
+Azure Key Vaults securely store application credentials (keys, certificates, secrets). Access must be restricted to authorized users and services.
+
+### Two Access Control Methods:
+
+1. **Key Vault Access Policy:**  
+   - Go to the Key Vault resource  
+   - Select **Access Control (IAM)** > **Vault Access Policy** > Create one
+
+2. **RBAC Policy (Recommended):**  
+   - Go to the Key Vault  
+   - Select **Access Control (IAM)** > **Add Role Assignment**  
+   - Select managed identity or user
+
+---
+
+## Enterprise Applications
+
+All SaaS applications are listed in the **Enterprise Applications** section in Entra ID.
+
+---
+
+## Single Sign-On (SSO)
+
+To configure SSO:
+
+1. Go to:  
+   `Entra ID > Enterprise Applications > Create or Register Application`  
+2. Click on **Single Sign-On**  
+3. Choose SSO method (SAML or OIDC)  
+4. Configure using credentials from the service provider
+
+---
+
+## Entitlement Management
+
+In a corporate environment, users have varying roles, permissions, licenses, and group memberships. These change over time, making it difficult to track access.
+
+**Solution:**  
+Use **Entitlement Management** in Entra ID to group resources and manage access through automated workflows and policies.
+
+### Benefits:
+
+- Users request access through automated workflows  
+- Access is granted based on roles and policies  
+- Access is revoked automatically when no longer needed
+
+### Catalogs
+
+Use catalogs to group resources:
+
+- **Onboarding Catalog:** For new employees  
+- **External Catalog:** For partners and collaborators
+
+### Resource Groups vs. Catalogs
+
+- **Resource Groups:** Infrastructure-level bundling (e.g., WebAppDeployment)  
+- **Catalogs:** Access-level bundling for entitlement management
+
+### Access Packages
+
+Bundles of applications managed within a catalog.
+
+### Creating a Catalog
+
+1. Go to:  
+   `Identity and Governance > Entitlement Management > Create Catalog`  
+2. Click on **Access Packages**  
+3. Add applications  
+4. Assign to the newly created catalog
+
+---
+
+## Connected Organizations
+
+Collaborate with external users by adding their identity sources as **Connected Organizations**.
+
+**Benefits:**
+
+- Simplifies access requests for external users  
+- Streamlines collaboration with partner organizations
+
+
+## Access Reviews
+
+In a corporate environment, there are hundreds or even thousands of users assigned to different roles, groups, applications, devices, etc. Over time, access to resources may be forgotten—especially when employees change positions or leave the company—yet still retain access to previous resources.
+
+This unmonitored access raises concerns around **security** and **compliance**.  
+Access Reviews help organizations control and audit user access to resources.
+
+### Key Features:
+
+- **Self-access reviews:** Users review their own access to determine if it's still needed  
+- **Delegated reviews:** Managers or IT admins review user access periodically or one-time  
+- **Review outcomes:** Access can be revoked or retained based on reviewer decisions
+
+### Configuration:
+
+Access Reviews are configured in **Identity Governance** within the Entra ID admin center.
+
+### Types of Access Reviews:
+
+1. **Applications**  
+2. **Teams and Groups**  
+3. **Entra ID Roles and Azure Roles**
+
+If a user no longer needs access to these resources, it can be revoked through the review process.
+
+---
+
+## Privileged Identity Management (PIM)
+
+PIM allows organizations to grant **temporary elevated privileges** to users.
+
+### Use Case:
+
+A user needs admin-level access for a specific task but shouldn't be permanently assigned an admin role.  
+PIM enables temporary elevation for that task.
+
+### Supported Roles:
+
+- **Entra ID Roles:** For tasks like user management, Conditional Access, etc.  
+- **Azure Roles:** For managing Azure resources like VMs, workloads, etc.
+
+---
+
+## Configuring PIM for Entra Roles
+
+1. Go to:  
+   `Entra Admin Center > Identity Governance > Privileged Identity Management > Microsoft Entra Roles > Settings`  
+2. Configure settings for the role (e.g., duration, MFA)  
+3. Go to **Assignments** and complete the configuration
+
+---
+
+## Configuring PIM for Groups
+
+Sometimes it's more efficient to configure PIM for groups rather than individual users.
+
+**Example:**  
+You have several security analysts from a partner company providing SOC services.
+
+### Procedure:
+
+1. Create a group and assign it a role (e.g., “Security Operator”)  
+2. Go to:  
+   `Privileged Identity Management > Enable PIM for this group`  
+3. Click **Add Assignment**  
+4. Select **Member**  
+5. Click **Next**
+
+Once enabled, any PIM user who logs in and activates their role will inherit the assigned group role (e.g., Security Operator, User Admin).
+
+> **Note:**  
+> Use the **Settings** section to configure PIM parameters such as duration, MFA, and more.
+
+---
