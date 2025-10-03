@@ -20,7 +20,7 @@ An Identity provider also makes it great for developers who want to authenticate
 
 ---
 
-## Common Identity Protocols
+###  Common Identity Protocols
 
 Identity protocols handle authentication, authorization, and identity management. There are several identity protocols, but common ones are:
 
@@ -38,7 +38,7 @@ With the help of these Identity protocols such as OpenID Connect and SAML, Singl
 
 ---
 
-## Administrative Units
+###  Administrative Units
 
 Administrative Units are used to logically group AD resources. For example, you may create one administrative unit for each of your department and then create groups in those AUs.
 
@@ -52,7 +52,7 @@ This ensures that administrators, such as helpdesk technicians, have restricted 
 
 ---
 
-## Types of Users in Entra ID
+###  Types of Users in Entra ID
 
 - **Cloud identities:** these are cloud users meaning users existing in Entra ID which has Entra ID as their source.
 - **Directory-synchronized identities:** These are users which exist in on-prem active directory and are synchronized with Entra ID via Entra Connect. These users have Windows server AD as their source.
@@ -68,7 +68,7 @@ Go to: `Groups > licences > assign licence`
 
 ---
 
-## Entra ID Groups
+###  Entra ID Groups
 
 There are two types of groups in Entra namely:
 
@@ -91,7 +91,7 @@ While creating groups they could either be dynamic or assigned meaning when crea
 
 ---
 
-## Security Defaults
+###  Security Defaults
 
 Security defaults are basic identity security settings recommended by Microsoft. When enabled, these recommendations will be automatically enforced in your organization. Administrators and users will be better protected from common identity-related attacks.
 
@@ -108,7 +108,7 @@ Go to: `Entra ID > Properties > Security Default`
 
 
 
-## Guest Accounts (External Identities)
+###  Guest Accounts (External Identities)
 
 Guest accounts in Entra ID are also called external identities. These users do not initially exist in your tenant but are added as guest users when invited, meaning a guest account will be automatically created for a user when the user is invited.
 
@@ -141,15 +141,14 @@ You can invite partners or employees of other companies to your shared resources
 > Fill out the CSV file but **do not delete or change the first two rows**  
 > Upload the CSV file
 
-**Note:**  
-Before inviting guest users, make sure your default settings for guest users are properly configured as a security best practice.
+> 💡 **Tip:** Before inviting guest users, make sure your default settings for guest users are properly configured as a security best practice.
 
 > Go to:  
 > `Entra admin center > Identity > External identities > Overview > External Collaboration Settings`
 
 ---
 
-## Tasks to Complete in Premium Entra on Work Computer
+###  Tasks to Complete in Premium Entra on Work Computer
 
 1. Set up Entra verifiable credentials  
 2. Create dynamic groups  
@@ -157,7 +156,7 @@ Before inviting guest users, make sure your default settings for guest users are
 
 ---
 
-## Terms of Use
+###  Terms of Use
 
 In Entra ID, you can set up Terms of Use which refers to corporate policies that users must read and accept before they can access certain resources. These terms can be customized by the organization and are used to ensure compliance and security.
 
@@ -180,7 +179,7 @@ When users sign in, they must accept the Terms of Use for the first time. Otherw
 
 ---
 
-## B2B Direct Connect
+###  B2B Direct Connect
 
 B2B Direct Connect requires mutual trust between two Microsoft Entra organizations, enabling access to each other's resources. Both organizations must enable B2B Direct Connect in their cross-tenant access settings.
 
@@ -193,7 +192,7 @@ If employees from two companies need to collaborate, both companies can enable B
 
 ---
 
-## Entra Connect Authentication Options
+###  Entra Connect Authentication Options
 
 Entra Connect is used to synchronize an on-prem AD with cloud-based Entra ID. There are three main authentication options:
 
@@ -220,7 +219,7 @@ Entra Connect is used to synchronize an on-prem AD with cloud-based Entra ID. Th
 ---
 
 
-## Entra Cloud Sync vs Entra Connect
+###  Entra Cloud Sync vs Entra Connect
 
 Cloud Sync and Entra Connect both synchronize on-prem AD infrastructure to Microsoft Entra ID, but Cloud Sync is the newer tool.
 
@@ -243,7 +242,7 @@ Occurs when a company merges with or acquires another company, requiring synchro
 
 ---
 
-## Entra Connect Health
+###  Entra Connect Health
 
 Used to monitor the health of your on-prem identity infrastructure. Reports failures and issues in the Entra Connect Health Portal.
 
@@ -251,7 +250,7 @@ Helps maintain reliable connections with Microsoft online services and Microsoft
 
 ---
 
-## Communication Templates
+###  Communication Templates
 
 Microsoft provides predefined communication templates for various purposes:
 
@@ -263,7 +262,7 @@ These templates can be downloaded and emailed to corporate users.
 
 ---
 
-## Configuring Multifactor Authentication (MFA)
+###  Configuring Multifactor Authentication (MFA)
 
 Enabling MFA can reduce account-related attacks by up to 99% according to Microsoft.
 
@@ -287,7 +286,7 @@ Restrict MFA registration to trusted office locations using Conditional Access P
 
 ---
 
-## Temporary Access Pass
+###  Temporary Access Pass
 
 A temporary code for new users to register MFA securely.
 
@@ -299,7 +298,7 @@ Create a new user → assign password → issue Temporary Access Pass for MFA re
 
 ---
 
-## Conditional Access Policy (CA)
+###  Conditional Access Policy (CA)
 
 Conditional Access means access is granted only when specific conditions are met.
 
@@ -318,7 +317,7 @@ Conditional Access means access is granted only when specific conditions are met
 
 ---
 
-## Configuring Conditional Access Policy
+###  Configuring Conditional Access Policy
 
 You can create a policy from scratch or use a template.
 
@@ -333,9 +332,9 @@ You can create a policy from scratch or use a template.
 - Define allowed devices or apps
 
 
-## Named Locations
+###  Named Locations
 
-Used to block:
+Used to block or allow:
 
 - Countries  
 - Specific IP addresses  
@@ -348,7 +347,7 @@ Block countries where your company doesn't operate or IPs linked to Advanced Per
 
 
 
-## Exclude the Following Users (Accounts)
+###  Exclude the Following Users (Accounts)
 
 Always exclude:
 
@@ -361,7 +360,7 @@ To prevent lockout during ransomware or other incidents.
 
 
 
-## Service Accounts and Service Principals
+###  Service Accounts and Service Principals
 
 - Non-interactive accounts used by backend services  
 - Cannot complete MFA programmatically  
@@ -377,7 +376,7 @@ Replace with managed identities if used in scripts or code.
 
 ---
 
-## Authentication Context
+###  Authentication Context
 
 Enables fine-grained access control within cloud apps.
 
@@ -392,7 +391,7 @@ Avoids overly restrictive or under-protective policies by targeting specific act
 
 ---
 
-## Creating an Emergency Account in AD
+###  Creating an Emergency Account in AD
 
 Emergency accounts (break-the-glass accounts) are vital for disaster recovery.
 
@@ -404,7 +403,7 @@ Emergency accounts (break-the-glass accounts) are vital for disaster recovery.
 
 ---
 
-## Best Practices for CA Policy Configuration
+###  Best Practices for CA Policy Configuration
 
 Avoid these configurations:
 
@@ -418,13 +417,12 @@ Avoid these configurations:
 
 - Block access
 
-**Note:**  
-Always double-check exclusions to prevent locking out the entire organization.
+> 💡 **Tip:** Always double-check exclusions to prevent locking out the entire organization.
 
 ---
 
 
-## Revoking User Sessions
+###  Revoking User Sessions
 
 When a user’s session is revoked it will require the user to re-sign-in from all devices.  
 Simply go to the user page and then click on **Revoke Sessions**.
@@ -445,7 +443,7 @@ To block a user:
 
 ---
 
-## FIDO2 (Fast Identity Online)
+###  FIDO2 (Fast Identity Online)
 
 FIDO2 is a passwordless authentication method using security keys instead of passwords.  
 These keys can be stored on USB sticks, Bluetooth, or NFC-supported devices (smart cards).
@@ -480,7 +478,7 @@ Manage user registration and FIDO2 security keys:
 
 ---
 
-## OATH One-Time Password Tokens
+###  OATH One-Time Password Tokens
 
 In corporate environments, employees use OATH-compliant OTP tokens to access VPNs remotely.
 
@@ -498,7 +496,7 @@ This two-factor authentication ensures secure access to the corporate network.
 
 ---
 
-## Self-Service Password Resets
+###  Self-Service Password Resets
 
 Allows users to reset or change their passwords without admin or helpdesk support.
 
@@ -522,7 +520,7 @@ Allows users to reset or change their passwords without admin or helpdesk suppor
 
 ---
 
-## Devices That Should Not Be Internet-Facing
+###  Devices That Should Not Be Internet-Facing
 
 These devices should never be exposed directly to the internet:
 
@@ -537,12 +535,11 @@ If these devices generate internet-related traffic or alerts (e.g., brute-force,
 
 ---
 
-## Entra ID Password Protection
+###  Entra ID Password Protection
 
 Blocks users from creating weak or banned passwords.
 
-**Note:**  
-Accounts created before enabling password protection are unaffected unless passwords are updated.
+> 💡 **Tip:** Accounts created before enabling password protection are unaffected unless passwords are updated.
 
 ### Enabling Password Protection
 
@@ -552,7 +549,7 @@ Accounts created before enabling password protection are unaffected unless passw
 
 ---
 
-## Smart Lockouts
+###  Smart Lockouts
 
 Protects users from brute-force and credential stuffing attacks.
 
@@ -571,7 +568,7 @@ Protects users from brute-force and credential stuffing attacks.
 
 ---
 
-## Persistent Browser Session
+###  Persistent Browser Session
 
 Allows users to remain signed in after closing and reopening their browser.
 
@@ -580,7 +577,7 @@ Users on personal devices see a “Stay signed in?” prompt after successful au
 
 ---
 
-## Sign-In Frequency
+###  Sign-In Frequency
 
 In Conditional Access (CA) policies, configure session controls to require re-authentication after a set time.
 
@@ -597,7 +594,7 @@ In Conditional Access (CA) policies, configure session controls to require re-au
 
 ---
 
-## Identity Protection
+###  Identity Protection
 
 Detects, investigates, and remediates identity-related risks.
 
@@ -631,7 +628,7 @@ Best configured via Conditional Access Policy:
 
 ---
 
-## Best Practice for User Risk Policy
+###  Best Practice for User Risk Policy
 
 Instead of blocking compromised users:
 
@@ -650,37 +647,63 @@ Otherwise, sign-ins will be blocked.
 
 ---
 
-Configuring Sign-in Risk Policy: sign-in risk policy is configured the same way as User Risk policy, but recommendation is to not block the sign-ins but rather require MFA. Because blocking sign-ins may prevent real user from signing-in. MFA will almost guarantee that the sign-in is authorized. So to configure sign-in risk policy: 
-1-	Create a CA policy > Conditions > Sign-in Risks 
-2-	Set to medium and high because choosing low as well, will generate a lot of false positives and cause user interruptions. 
-3-	Then choose grant in access control > Require MFA 
-4-	Then go to sessions select sign-in frequency > and choose every time so the user needs to sign-in every time so the user immediately must reauthenticate.  
-5-	Test the policy by saving it in report-only mode or directly enabling it. 
 
-Investigating Risks: identity protection provides three types of risk reports that we can analyse to either investigate risks or manually as admin remediate them (changing user password, disabling user account and etc). These reports are:
+### Configuring Sign-in Risk Policy
 
-1-	Risky sign-ins Reports: All sign-ins which identity protection assumes are compromised will end up here. You can of course filter the output to swiftly find what you are looking for. 
-2-	Risky User Reports: All users which identity protection thinks are compromised will end up here.  These reports also contain risks remediated by user themselves and etc. so both active risks and risk logs. 
-3-	Risk Detection Reports: With the information provided by the risk detections report, administrators can find:
+Sign-in risk policy is configured the same way as User Risk policy, but recommendation is to not block the sign-ins but rather require MFA. Because blocking sign-ins may prevent real user from signing-in. MFA will almost guarantee that the sign-in is authorized.
 
--	Information about each risk detection including type.
--	Other risks triggered at the same time.
--	Sign-in attempt location.
+So to configure sign-in risk policy:
 
+1- Create a CA policy > Conditions > Sign-in Risks  
+2- Set to medium and high because choosing low as well, will generate a lot of false positives and cause user interruptions.  
+3- Then choose grant in access control > Require MFA  
+4- Then go to sessions select sign-in frequency > and choose every time so the user needs to sign-in every time so the user immediately must reauthenticate.  
+5- Test the policy by saving it in report-only mode or directly enabling it.
 
-Access Management and roles
-There are two types of roles that can be used to provide fine-grained access control and permissions to users for accessing resources. These roles are Azure roles and Entra ID roles which are different from each other. 
-Azure Roles: Azure roles control permissions to manage Azure resources for example controlling permission to resources, resource groups, subscriptions, management groups and so on. So if you would like to control user access to such resources and workloads then you will use azure RBAC in azure portal. 
-Entra ID Roles: Microsoft Entra roles control permissions to manage Microsoft Entra resources such as users, groups, domains, and applications. 
+---
 
-Azure Role Based Access Control (RBAC): RBAC is an authorization system which gives a user access to azure resources that is based on their role. This follows the concept of least privilege and is a great security practice.  To grant access, you assign roles to users, groups, service principals, or managed identities at a particular scope. Primary steps to follow when assigning an Azure role:
-1-	Whom to assign roles?
--	User - Only a single person is needed for the task. You can assign a role to users in other tenants.
--	Group - Use when you need to grant a set of users the same role.
--	Service Principal - Assign a role to a service principal when you want to grant an application access to an Azure resource.
--	Managed Identity - Use the managed identity when you want an application to manage credentials for authentication.
+### Investigating Risks
 
-## Roles
+Identity protection provides three types of risk reports that we can analyse to either investigate risks or manually as admin remediate them (changing user password, disabling user account and etc). These reports are:
+
+1- Risky sign-ins Reports: All sign-ins which identity protection assumes are compromised will end up here. You can of course filter the output to swiftly find what you are looking for.  
+2- Risky User Reports: All users which identity protection thinks are compromised will end up here. These reports also contain risks remediated by user themselves and etc. so both active risks and risk logs.  
+3- Risk Detection Reports: With the information provided by the risk detections report, administrators can find:
+
+- Information about each risk detection including type.  
+- Other risks triggered at the same time.  
+- Sign-in attempt location.
+
+---
+
+### Access Management and Roles
+
+There are two types of roles that can be used to provide fine-grained access control and permissions to users for accessing resources. These roles are Azure roles and Entra ID roles which are different from each other.
+
+**Azure Roles:**  
+Azure roles control permissions to manage Azure resources for example controlling permission to resources, resource groups, subscriptions, management groups and so on. So if you would like to control user access to such resources and workloads then you will use azure RBAC in azure portal.
+
+**Entra ID Roles:**  
+Microsoft Entra roles control permissions to manage Microsoft Entra resources such as users, groups, domains, and applications.
+
+---
+
+### Azure Role Based Access Control (RBAC)
+
+RBAC is an authorization system which gives a user access to azure resources that is based on their role. This follows the concept of least privilege and is a great security practice.
+
+To grant access, you assign roles to users, groups, service principals, or managed identities at a particular scope.
+
+**Primary steps to follow when assigning an Azure role:**
+
+1- Whom to assign roles?
+
+- User – Only a single person is needed for the task. You can assign a role to users in other tenants.  
+- Group – Use when you need to grant a set of users the same role.  
+- Service Principal – Assign a role to a service principal when you want to grant an application access to an Azure resource.  
+- Managed Identity – Use the managed identity when you want an application to manage credentials for authentication.
+
+###  Roles
 
 There are different types of roles that we can assign to users, groups, and managed identities—built-in roles and custom roles.
 
@@ -709,7 +732,7 @@ To configure RBAC (Azure Role-Based Access Control):
 
 ---
 
-## Configuring Entra Roles
+###  Configuring Entra Roles
 
 ### Assigning Built-in Entra Roles
 
@@ -727,7 +750,7 @@ To configure RBAC (Azure Role-Based Access Control):
 
 ---
 
-## Managed Identities
+###  Managed Identities
 
 When building applications, developers need to store secrets, keys, certificates, and credentials securely. These should not be stored in the application code due to security risks.
 
@@ -749,7 +772,7 @@ Use **Managed Identities** to eliminate the need for developers to manage creden
 
 ---
 
-## Access Control for Key Vaults
+###  Access Control for Key Vaults
 
 Azure Key Vaults securely store application credentials (keys, certificates, secrets). Access must be restricted to authorized users and services.
 
@@ -764,15 +787,15 @@ Azure Key Vaults securely store application credentials (keys, certificates, sec
    - Select **Access Control (IAM)** > **Add Role Assignment**  
    - Select managed identity or user
 
+
+
+
+
+> 💡 **Tip:** All SaaS applications are listed in the **Enterprise Applications** section in Entra ID.
+
 ---
 
-## Enterprise Applications
-
-All SaaS applications are listed in the **Enterprise Applications** section in Entra ID.
-
----
-
-## Single Sign-On (SSO)
+###  Single Sign-On (SSO)
 
 To configure SSO:
 
@@ -784,7 +807,7 @@ To configure SSO:
 
 ---
 
-## Entitlement Management
+###  Entitlement Management
 
 In a corporate environment, users have varying roles, permissions, licenses, and group memberships. These change over time, making it difficult to track access.
 
@@ -823,7 +846,7 @@ Bundles of applications managed within a catalog.
 
 ---
 
-## Connected Organizations
+###  Connected Organizations
 
 Collaborate with external users by adding their identity sources as **Connected Organizations**.
 
@@ -833,7 +856,7 @@ Collaborate with external users by adding their identity sources as **Connected 
 - Streamlines collaboration with partner organizations
 
 
-## Access Reviews
+###  Access Reviews
 
 In a corporate environment, there are hundreds or even thousands of users assigned to different roles, groups, applications, devices, etc. Over time, access to resources may be forgotten—especially when employees change positions or leave the company—yet still retain access to previous resources.
 
@@ -860,7 +883,7 @@ If a user no longer needs access to these resources, it can be revoked through t
 
 ---
 
-## Privileged Identity Management (PIM)
+###  Privileged Identity Management (PIM)
 
 PIM allows organizations to grant **temporary elevated privileges** to users.
 
@@ -876,7 +899,7 @@ PIM enables temporary elevation for that task.
 
 ---
 
-## Configuring PIM for Entra Roles
+###  Configuring PIM for Entra Roles
 
 1. Go to:  
    `Entra Admin Center > Identity Governance > Privileged Identity Management > Microsoft Entra Roles > Settings`  
@@ -885,7 +908,7 @@ PIM enables temporary elevation for that task.
 
 ---
 
-## Configuring PIM for Groups
+###  Configuring PIM for Groups
 
 Sometimes it's more efficient to configure PIM for groups rather than individual users.
 
@@ -903,7 +926,6 @@ You have several security analysts from a partner company providing SOC services
 
 Once enabled, any PIM user who logs in and activates their role will inherit the assigned group role (e.g., Security Operator, User Admin).
 
-> **Note:**  
-> Use the **Settings** section to configure PIM parameters such as duration, MFA, and more.
+> 💡 **Tip:**  Use the **Settings** section to configure PIM parameters such as duration, MFA, and more.
 
 ---
