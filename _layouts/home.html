@@ -18,10 +18,16 @@ layout: default
           <h3 class="post-title">{{ post.title | escape }}</h3>
         </a>
         <div class="post-paragraph">
-          {%- assign clean_content = post.content | strip_html | split: "\n" -%}
-          {%- assign filtered_lines = "" -%}
-          {{  post.content | truncatewords: 50 }}
-        </div>
+  {%- assign clean_content = post.content 
+    | replace: '![', '' 
+    | replace: '](', '' 
+    | replace: ')', '' 
+    | strip_html 
+    | split: "\n" -%}
+  {%- assign filtered_lines = "" -%}
+  {{ clean_content | join: " " | truncatewords: 50 }}
+</div>
+
         <a href="{{ post.url | relative_url }}" class="read-more">Read more →
       </article></a>
       {%- endfor -%}
